@@ -1,10 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import Layout from "./components/Layout/layout";
 function App() {
   return (
     <div className="App">
-      <h1>Chicken Nugget</h1>
+      <Layout>
+        <h1>Chicken Nugget</h1>
+      </Layout>
     </div>
   );
 }
