@@ -1,10 +1,11 @@
 import "./App.css";
+import BurgerBuilder from "./components/BurgerBuilder/BurgerBuilder";
 import Layout from "./components/Layout/layout";
 function App() {
   return (
     <div className="App">
       <Layout>
-        <h1>Chicken Nugget</h1>
+        <BurgerBuilder />
       </Layout>
     </div>
   );
