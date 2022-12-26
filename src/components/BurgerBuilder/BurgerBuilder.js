@@ -76,6 +76,9 @@ class BurgerBuilder extends Component {
       purchasing: false,
     });
   };
+  continuePurchaseHandler = () => {
+    alert("You Continue");
+  };
   render() {
     const disableIngredientRemoval = {
       ...this.state.ingredients,
@@ -90,7 +93,12 @@ class BurgerBuilder extends Component {
           show={this.state.purchasing}
           modalClosed={this.closePurchaseHandler}
         >
-          <OrderSummary ingredients={this.state.ingredients} />
+          <OrderSummary
+            cancel={this.closePurchaseHandler}
+            continue={this.continuePurchaseHandler}
+            ingredients={this.state.ingredients}
+            price={this.state.totalPrice}
+          />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
