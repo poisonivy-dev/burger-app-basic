@@ -1,6 +1,6 @@
 import "./App.css";
 import BurgerBuilder from "./components/BurgerBuilder/BurgerBuilder";
-import Layout from "./components/Layout/layout";
+import Layout from "./hoc/Layout/layout";
 function App() {
   return (
     <div className="App">
