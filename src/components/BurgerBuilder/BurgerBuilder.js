@@ -87,24 +87,38 @@ class BurgerBuilder extends Component {
     });
   };
   continuePurchaseHandler = () => {
-    this.setState({ loader: true });
-    const order = {
-      ingredients: { ...this.state.ingredients },
-      price: this.state.totalPrice.toFixed(2),
-      customer: {
-        name: "MAX",
-        address: "california, USA",
-        contact: "021456789",
-      },
-      deliveryMethod: "fastest",
-    };
-    axios
-      .post("/orders.json", order)
-      .then((res) => this.setState({ loader: false, purchasing: false }))
-      .catch((err) => {
-        this.setState({ loader: false, purchasing: false });
-        console.log(err);
-      });
+    const queryString = [];
+    for (let i in this.state.ingredients) {
+      queryString.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
+    }
+    queryString.join("&");
+    this.props.history.push({
+      pathname: "/checkout",
+      search: "?" + queryString,
+    });
+
+    // this.setState({ loader: true });
+    // const order = {
+    //   ingredients: { ...this.state.ingredients },
+    //   price: this.state.totalPrice.toFixed(2),
+    //   customer: {
+    //     name: "MAX",
+    //     address: "california, USA",
+    //     contact: "021456789",
+    //   },
+    //   deliveryMethod: "fastest",
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then((res) => this.setState({ loader: false, purchasing: false }))
+    //   .catch((err) => {
+    //     this.setState({ loader: false, purchasing: false });
+    //     console.log(err);
+    //   });
   };
   render() {
     const disableIngredientRemoval = {
